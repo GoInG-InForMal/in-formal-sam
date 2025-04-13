@@ -1,18 +1,18 @@
 [
   {
-    "name": "Prod1",
-    "description": "Desc1\nDesc2\ndesc3",
-    "price": 19,
-    "image": "E:\\Engine\\GoIng-InForMal\\InForMal.SAM\\pexels-rdne-7947716.jpg",
-    "category": "a",
+    "name": "Hoodie",
+    "description": "It's\njust\nHoodie",
+    "price": 19.99,
+    "image": "assets/img/hoodie1.jpg",
+    "category": "Clothes",
     "paypalId": ""
   },
   {
     "name": "Product2",
-    "description": "desc1\ndesc3\n",
-    "price": 50,
-    "image": "E:\\Engine\\GoIng-InForMal\\InForMal.SAM\\Waste_Prevention_Reuse_Purple-PNL_Graphic_683966248.jpg",
-    "category": "a",
+    "description": "ZL02D\nMen Smart Watch \nFull Touch Screen \nSport Fitness Tracker \nIP68 Waterproof \nBluetooth \nSmartwatch for Men and Women \nSmartphone 2023",
+    "price": 14.34,
+    "image": "assets/img/Screenshot 2025-04-13 111530.jpg",
+    "category": "Electrons",
     "paypalId": ""
   }
 ]
