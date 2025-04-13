@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InForMal SAM - Your Trendy eStore</title>
+  <style>
+    /* ===== Basic Reset & Styles ===== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+    }
+    header, footer {
+      background: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('my_pic_background.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3em;
+      text-shadow: 1px 1px 4px black;
+    }
+    .hero button {
+      background: #00c896;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* ===== Featured Products (static) ===== */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    /* ===== Benefits Section ===== */
+    .benefits {
+      background: #eee;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .benefit {
+      width: 200px;
+      margin: 10px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header with Nav ===== -->
+  <header>
+    <nav>
+      <div><strong>InForMal SAM</strong></div>
+      <div>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <h1>Style That Speaks for You</h1>
+    <p>Discover the latest streetwear, gadgets, and must-haves.</p>
+    <button onclick="location.href='#products'">Shop Now</button>
+  </section>
+
+  <!-- ===== Featured Products ===== -->
+  
+<section id="products" class="products">
+  <!-- JS will insert products here -->
+
+
+<script>
+  // Load products.json and render to DOM
+  fetch('products.json')
+    .then(res => res.json())
+    .then(products => {
+      const container = document.getElementById('products');
+
+      products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <p><strong>$${product.price.toFixed(2)}</strong></p>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="${product.paypalId}">
+            <input type="submit" value="Buy Now via PayPal">
+          </form>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error("Failed to load products.json", err);
+      document.getElementById('products').innerHTML = '<p>Products failed to load.</p>';
+    });
+</script>
+</section>
+  <!-- ===== Benefits Section ===== -->
+  <section class="benefits">
+    <div class="benefit">
+      <h4>Free Shipping</h4>
+      <p>On all orders over $50</p>
+    </div>
+    <div class="benefit">
+      <h4>Money-back Guarantee</h4>
+      <p>30-day no-hassle returns</p>
+    </div>
+    <div class="benefit">
+      <h4>Secure Payments</h4>
+      <p>Via PayPal checkout</p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    &copy; 2025 InForMal SAM. Built with love.
+  </footer>
+
+</body>
+</html>

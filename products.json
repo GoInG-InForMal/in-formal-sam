@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Prod1",
+    "description": "Desc1\nDesc2\ndesc3",
+    "price": 19,
+    "image": "E:\\Engine\\GoIng-InForMal\\InForMal.SAM\\pexels-rdne-7947716.jpg",
+    "category": "a",
+    "paypalId": ""
+  },
+  {
+    "name": "Product2",
+    "description": "desc1\ndesc3\n",
+    "price": 50,
+    "image": "E:\\Engine\\GoIng-InForMal\\InForMal.SAM\\Waste_Prevention_Reuse_Purple-PNL_Graphic_683966248.jpg",
+    "category": "a",
+    "paypalId": ""
+  }
+]

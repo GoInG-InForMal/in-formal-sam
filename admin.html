@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Tool - eStore name</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    pre {
+      background: #222;
+      color: #0f0;
+      padding: 10px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>InForMal SAM - Admin Tool</h1>
+
+  <form id="productForm">
+    <label>Product Name
+      <input type="text" id="name" required>
+    </label>
+
+    <label>Description
+      <textarea id="description" rows="4" required></textarea>
+    </label>
+
+    <label>Price (USD)
+      <input type="number" id="price" step="0.01" required>
+    </label>
+
+    <label>Image URL
+      <input type="url" id="image" required>
+    </label>
+
+    <label>Category
+      <input type="text" id="category">
+    </label>
+
+    <label>PayPal Button ID (Optional)
+      <input type="text" id="paypalId">
+    </label>
+
+    <button type="submit">Add Product</button>
+    <button type="button" onclick="downloadJSON()">Download JSON</button>
+  </form>
+
+  <h2>Generated Products JSON</h2>
+  <pre id="output">[]</pre>
+
+  <script>
+    const products = [];
+    const form = document.getElementById("productForm");
+    const output = document.getElementById("output");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const product = {
+        name: document.getElementById("name").value,
+        description: document.getElementById("description").value,
+        price: parseFloat(document.getElementById("price").value),
+        image: document.getElementById("image").value,
+        category: document.getElementById("category").value,
+        paypalId: document.getElementById("paypalId").value
+      };
+
+      products.push(product);
+      output.textContent = JSON.stringify(products, null, 2);
+      form.reset();
+    });
+
+    function downloadJSON() {
+      const blob = new Blob([JSON.stringify(products, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "products.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* CSS: styles.css */ 
+body 
+{ 
+	font-family: sans-serif; 
+	background: #f0f2f5; 
+	margin: 0; 
+	padding: 0; 
+}
+
+.hero-banner 
+{ 
+	background: linear-gradient(to right, #2c3e50, #4ca1af); 
+	color: white; 
+	text-align: center; 
+	padding: 3rem 1rem; 
+}
+
+.testimonials 
+{ 
+	display: flex; 
+	gap: 2rem; 
+	justify-content: center; 
+	padding: 2rem; 
+}
+
+.testimonial 
+{ 
+	background: white; 
+	padding: 1.5rem; 
+	border-radius: 10px; 
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+	max-width: 300px; 
+	text-align: center; 
+}
